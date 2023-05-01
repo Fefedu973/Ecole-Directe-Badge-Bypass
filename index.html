@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecole Directe Badge Bypass</title>
+    <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+<body>
+    <div class="background">
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="images/logo.svg" alt="logo">
+                </div>
+                <div class="title">
+                    <h1>Ecole Directe Badge Bypass</h1>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <div class="badgeconfig">
+                <div class="padding">
+                    <h2>Configurer votre badge :</h2>
+                    <label for="prenom">Prénom :</label>
+                    <input oninput="update()" type="text" id="prenom" name="prenom" placeholder="Prénom">
+                    <label for="nom">NOM :</label>
+                    <input oninput="update()" type="text" id="nom" name="nom" placeholder="NOM">
+                    <label for="classe">Classe :</label>
+                    <select oninput="update()" name="classe" id="classe">
+                        <option value="Classe">Choisir sa classe</option>
+                        <option value="Sixième 1">Sixième 1</option>
+                        <option value="Sixième 2">Sixième 2</option>
+                        <option value="Sixième 3">Sixième 3</option>
+                        <option value="Sixième 4">Sixième 4</option>
+                        <option value="Sixième 5">Sixième 5</option>
+                        <option value="Cinquième 1">Cinquième 1</option>
+                        <option value="Cinquième 2">Cinquième 2</option>
+                        <option value="Cinquième 3">Cinquième 3</option>
+                        <option value="Cinquième 4">Cinquième 4</option>
+                        <option value="Cinquième 5">Cinquième 5</option>
+                        <option value="Quatrième 1">Quatrième 1</option>
+                        <option value="Quatrième 2">Quatrième 2</option>
+                        <option value="Quatrième 3">Quatrième 3</option>
+                        <option value="Quatrième 4">Quatrième 4</option>
+                        <option value="Quatrième 5">Quatrième 5</option>
+                        <option value="Troisième 1">Troisième 1</option>
+                        <option value="Troisième 2">Troisième 2</option>
+                        <option value="Troisième 3">Troisième 3</option>
+                        <option value="Troisième 4">Troisième 4</option>
+                        <option value="Troisième 5">Troisième 5</option>
+                        <option value="Seconde 1">Seconde 1</option>
+                        <option value="Seconde 2">Seconde 2</option>
+                        <option value="Seconde 3">Seconde 3</option>
+                        <option value="Seconde 4">Seconde 4</option>
+                        <option value="Seconde 5">Seconde 5</option>
+                        <option value="Seconde 6">Seconde 6</option>
+                        <option value="Seconde 7">Seconde 7</option>
+                        <option value="Seconde 8">Seconde 8</option>
+                        <option value="Première G1">Première G1</option>
+                        <option value="Première G2">Première G2</option>
+                        <option value="Première G3">Première G3</option>
+                        <option value="Première G4">Première G4</option>
+                        <option value="Première G5">Première G5</option>
+                        <option value="Première G6">Première G6</option>
+                        <option value="Première G7">Première G7</option>
+                        <option value="Première G8">Première G8</option>
+                        <option value="Première G9">Première G9</option>
+                        <option value="Première STI2D">Première STI2D</option>
+                        <option value="Terminale TG1">Terminale TG1</option>
+                        <option value="Terminale TG2">Terminale TG2</option>
+                        <option value="Terminale TG3">Terminale TG3</option>
+                        <option value="Terminale TG4">Terminale TG4</option>
+                        <option value="Terminale TG5">Terminale TG5</option>
+                        <option value="Terminale TG6">Terminale TG6</option>
+                        <option value="Terminale TG7">Terminale TG7</option>
+                        <option value="Terminale TG8">Terminale TG8</option>
+                        <option value="Terminale TG9">Terminale TG9</option>
+                        <option value="Terminale STI2D">Terminale STI2D</option>
+                    </select>
+                    <label class="labeljours" for="annee">Cocher le(s) jour(s) d’inscription au self :</label>
+                    <div class="checkbox">
+                        <div class="gab">
+                            <input oninput="update()" type="checkbox" id="lundi" name="lundi">
+                            <label for="lundi">Lundi</label>
+                        </div>
+                        <div class="gab"><input oninput="update()" type="checkbox" id="mardi" name="mardi">
+                            <label for="mardi">Mardi</label>
+                        </div>
+                        <div class="gab"><input oninput="update()" type="checkbox" id="mercredi" name="mercredi">
+                            <label for="mercredi">Mercredi</label>
+                        </div>
+                        <div class="gab"><input oninput="update()" type="checkbox" id="jeudi" name="jeudi">
+                            <label for="jeudi">Jeudi</label>
+                        </div>
+                        <div class="gab"><input oninput="update()" type="checkbox" id="vendredi" name="vendredi">
+                            <label for="vendredi">Vendredi</label>
+                        </div>
+                    </div>
+                    <label for="date">Photo :</label>
+                    <input oninput="update()" type="file" id="photo" name="photo" accept="image/png, image/jpeg">
+                    <!-- <p>Ou se connecter à Ecole Directe pour récupérer la photo automatiquement :</p>
+            <div class="ecoledirecte">
+                <input type="text" id="identifiant" name="identifiant" placeholder="Identifiant">
+                <input type="password" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
+                <button onclick="login()" class="submit" type="submit">Récupérer la photo</button>
+            </div> -->
+                    <button onclick="openFullscreen();" class="submit" type="submit">Générer et afficher en plein
+                        écran<img class="fullscreen" src="images/fullscreen.svg"></button>
+                </div>
+            </div>
+            <div class="iphonewarning">
+                <p>Sur iphone le fullscreen est interdit par apple et donc impossible pour le faire fonctionner:
+                <ul>
+                    <li>Cliquez sur partager</li>
+                    <li>Cliquez sur ajouter à l'écran d'accueil</li>
+                    <li>Ouvrir le site depuis l'écran d'acceuil</li>
+                    <li>Enfin remplir à nouveau les informations et cliquez sur générer</li>
+                </ul>
+                </p>
+            </div>
+            <div class="badgepreview">
+                <div class="header">
+                    <h1>Badge</h1>
+                    <img onclick="closeFullscreen()" src="images/close.svg" alt="close">
+                </div>
+                <div class="maininfos">
+                    <img id="photopreview" class="photo" src="images/photo.svg" alt="photo">
+                    <div class="infos">
+                        <h2 id="prenometnom">Prénom NOM</h2>
+                        <h3 id="classepreview">Classe</h3>
+                    </div>
+
+                </div>
+                <div class="codebar">
+                    <img src="images/codebar.svg" alt="codebar">
+                </div>
+                <div class="regime">
+                    <h2 id="regime">Régime : REGIME X JOURS</h2>
+                </div>
+                <div class="repas">
+                    <div class="midi">
+                        <img class="midiimg" src="images/couverts.svg" alt="repas">
+                        <div class="jours">
+                            <h2>Midi (semaine type)</h2>
+                            <div class="jourslist">
+                                <div>L<img id="previewlundi" class="yes" src="images/no.svg"></div>
+                                <div>M<img id="previewmardi" class="yes" src="images/no.svg"></div>
+                                <div>M<img id="previewmercredi" class="yes" src="images/no.svg"></div>
+                                <div>J<img id="previewjeudi" class="yes" src="images/no.svg"></div>
+                                <div>V<img id="previewvendredi" class="yes" src="images/no.svg"></div>
+                                <div>S<img id="previewsamedi" class="yes" src="images/no.svg"></div>
+                                <div>D<img id="previewdimanche" class="yes" src="images/no.svg"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="midi">
+                        <img class="midiimg" src="images/couverts.svg" alt="repas">
+                        <div class="jours">
+                            <h2>Soir (semaine type)</h2>
+                            <div class="jourslist">
+                                <div>L<img class="yes" src="images/no.svg"></div>
+                                <div>M<img class="yes" src="images/no.svg"></div>
+                                <div>M<img class="yes" src="images/no.svg"></div>
+                                <div>J<img class="yes" src="images/no.svg"></div>
+                                <div>V<img class="yes" src="images/no.svg"></div>
+                                <div>S<img class="yes" src="images/no.svg"></div>
+                                <div>D<img class="yes" src="images/no.svg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="date">
+                    <p id="date">jour de la semaine jour mois année - heures:minutes:secondes</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="disclaimer">Disclamer ⚠️ Je ne suis en AUCUN CAS responsable de l'utilisation que vous faites de
+                ce service</p>
+            <p class="credits">©2023 Ferréol DUBOIS-COLI | Tout Droits Réservés</p>
+        </div>
+        <img id="test">
+        <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/barcodes/JsBarcode.code39.min.js"></script>
+        <script>
+            //if the user is on iphone, display a warning
+            if (navigator.userAgent.indexOf('iPhone') != -1) {
+                document.getElementsByClassName("iphonewarning")[0].style.display = "block";
+            }
+            function affichZero(nombre) {
+
+                return nombre < 10 ? '0' + nombre : nombre;
+            }
+            function dateEtHeure() {
+
+
+                let cejour = new Date();
+                let options = { weekday: "long", year: "numeric", month: "long", day: "2-digit" };
+                let date = cejour.toLocaleDateString("fr-FR", options);
+
+                const infos = new Date();
+
+
+
+                document.getElementById('date').innerHTML = date + " " + "-" + ' ' + affichZero(infos.getHours()) + ':' + affichZero(infos.getMinutes()) + ":" + affichZero(infos.getSeconds());
+            }
+
+
+            window.onload = function () {
+                setInterval("dateEtHeure()", 100);
+            };
+            var prenom = document.getElementById("prenom").value;
+            var nom = document.getElementById("nom").value;
+            var classe = document.getElementById("classe").value;
+            var lundi = document.getElementById("lundi").checked;
+            var mardi = document.getElementById("mardi").checked;
+            var mercredi = document.getElementById("mercredi").checked;
+            var jeudi = document.getElementById("jeudi").checked;
+            var vendredi = document.getElementById("vendredi").checked;
+
+            function update() {
+                nbjoursexterne = 2;
+                var prenom = document.getElementById("prenom").value;
+                var nom = document.getElementById("nom").value;
+                var classe = document.getElementById("classe").value;
+                var lundi = document.getElementById("lundi").checked;
+                var mardi = document.getElementById("mardi").checked;
+                var mercredi = document.getElementById("mercredi").checked;
+                var jeudi = document.getElementById("jeudi").checked;
+                var vendredi = document.getElementById("vendredi").checked;
+                const [file] = document.getElementById("photo").files;
+                if (prenom == "") {
+                    prenom = "Prénom";
+                }
+                if (nom == "") {
+                    nom = "NOM";
+                }
+                document.getElementById("prenometnom").innerHTML = prenom + " " + nom;
+                try { document.getElementById("photopreview").src = URL.createObjectURL(file); } catch (error) { console.log("pas de photo") }
+                document.getElementById("classepreview").innerHTML = classe;
+                if (lundi == true) {
+                    console.log("lundi");
+                    document.getElementById("previewlundi").src = "images/yes.svg";
+                } else {
+                    document.getElementById("previewlundi").src = "images/no.svg";
+                    nbjoursexterne = nbjoursexterne + 1;
+                }
+                if (mardi == true) {
+                    console.log("mardi");
+                    document.getElementById("previewmardi").src = "images/yes.svg";
+                } else {
+                    document.getElementById("previewmardi").src = "images/no.svg";
+                    nbjoursexterne = nbjoursexterne + 1;
+                }
+                if (mercredi == true) {
+                    console.log("mercredi");
+                    document.getElementById("previewmercredi").src = "images/yes.svg";
+                } else {
+                    document.getElementById("previewmercredi").src = "images/no.svg";
+                    nbjoursexterne = nbjoursexterne + 1;
+                }
+                if (jeudi == true) {
+                    console.log("jeudi");
+                    document.getElementById("previewjeudi").src = "images/yes.svg";
+                } else {
+                    document.getElementById("previewjeudi").src = "images/no.svg";
+                    nbjoursexterne = nbjoursexterne + 1;
+                }
+                if (vendredi == true) {
+                    console.log("vendredi");
+                    document.getElementById("previewvendredi").src = "images/yes.svg";
+                } else {
+                    document.getElementById("previewvendredi").src = "images/no.svg";
+                    nbjoursexterne = nbjoursexterne + 1;
+                }
+                if (lundi == false && mardi == false && mercredi == false && jeudi == false && vendredi == false) { regime = "EXTERNE LIBRE" } else { regime = "DEMI PENSIONNAIRE " + nbjoursexterne + " JOURS" }
+                document.getElementById("regime").innerHTML = "Régime : " + regime;
+            }
+
+            function openFullscreen() {
+                update();
+                var elem = document.documentElement;
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+                //if the user is on iphone, add the class fullscreen to the preview
+                if (navigator.userAgent.indexOf('iPhone') != -1) {
+                    document.getElementsByClassName("badgepreview")[0].classList.add("fullscreenfixpreview");
+                    document.getElementsByClassName("header")[0].classList.add("fullscreenfixheader");
+                    document.getElementsByTagName("html")[0].classList.add("fullscreenfixhtml");
+                } else if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+            function closeFullscreen() {
+                //if the user is on iphone, remove the class fullscreen to the preview
+                if (navigator.userAgent.indexOf('iPhone') != -1) {
+                    document.getElementsByClassName("badgepreview")[0].classList.remove("fullscreenfixpreview");
+                    document.getElementsByClassName("header")[0].classList.remove("fullscreenfixheader");
+                    document.getElementsByTagName("html")[0].classList.remove("fullscreenfixhtml");
+                } else if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                }
+            }
+        </script>
+        <script>
+            function login() {
+                identifiant = document.getElementById("identifiant").value;
+                motdepasse = document.getElementById("motdepasse").value;
+                console.log(identifiant);
+                console.log(motdepasse);
+                var request = new XMLHttpRequest();
+                request.open('POST', 'https://api.ecoledirecte.com/v3/login.awp', true);
+                request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                request.send('data={"identifiant": "' + identifiant + '","motdepasse": "' + motdepasse + '"}');
+                request.onload = function () {
+                    if (this.status >= 200 && this.status < 400) {
+                        // Success!
+                        var data = JSON.parse(this.response);
+                        console.log(data);
+                        photolink = data.data.accounts[0].profile.photo;
+                        barcode = data.data.accounts[0].modules[0].params.numeroBadge;
+                        console.log(barcode);
+                        //put thephoto in the preview
+                        document.getElementById("photopreview").src = photolink;
+                    } else {
+                        // We reached our target server, but it returned an error
+                        console.log("error");
+                    }
+                };
+            }
+        </script>
+        <script>
+            test();
+            async function test() {
+                const response = await fetch("https://doc1.ecoledirecte.com/PhotoEleves/0692920Z_54654435774b2b6b765063/746d754a7077.jpg", {
+                    "headers": {
+                        "accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+                        "accept-language": "fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7",
+                        "sec-ch-ua": "\"Chromium\";v=\"112\", \"Google Chrome\";v=\"112\", \"Not:A-Brand\";v=\"99\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-fetch-dest": "image",
+                        "sec-fetch-mode": "no-cors",
+                        "sec-fetch-site": "same-site"
+                    },
+                    "referrer": "https://www.ecoledirecte.com/",
+                    "referrerPolicy": "strict-origin-when-cross-origin",
+                    "body": null,
+                    "method": "GET",
+                    "mode": "cors",
+                    "credentials": "omit"
+                });
+                const blob = await response.blob();
+                getElementById("test").src = URL.createObjectURL(blob);
+                console.log(blob);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
