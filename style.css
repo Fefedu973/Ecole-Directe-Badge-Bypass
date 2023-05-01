@@ -338,6 +338,9 @@ html:fullscreen {
     border-radius: 0px;
     max-width: none;
     width: 100%;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
 
 }
 
@@ -348,8 +351,26 @@ html:fullscreen {
 
 .fullscreenfixhtml {
     overflow: hidden;
+}
+
+.fullscreenfixbody {
     margin: 0;
     height: 100%;
     overflow: hidden;
-    width: 100%;
+}
+
+.fullscreenheaderfix {
+    display: none;
+}
+
+.fullscreenfooterfix {
+    display: none;
+}
+
+.fullscreeniphonewarningfix {
+    display: none;
+}
+
+.fullscreenbadgeconfigfix {
+    display: none;
 }

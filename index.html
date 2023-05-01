@@ -116,7 +116,8 @@
                 </div>
             </div>
             <div class="iphonewarning">
-                <p>Sur iphone le fullscreen est interdit par apple et donc impossible pour le faire fonctionner:
+                <p>Le fullscreen n'est pas disponible sur iPhone à cause d'une limitation d'iOS. Pour contourner ce
+                    problème, vous pouvez ajouter le site à votre écran d'accueil.</p>
                 <ul>
                     <li>Cliquez sur partager</li>
                     <li>Cliquez sur ajouter à l'écran d'accueil</li>
@@ -293,6 +294,11 @@
                     document.getElementsByClassName("badgepreview")[0].classList.add("fullscreenfixpreview");
                     document.getElementsByClassName("header")[0].classList.add("fullscreenfixheader");
                     document.getElementsByTagName("html")[0].classList.add("fullscreenfixhtml");
+                    document.body.classList.add("fullscreenfixbody");
+                    document.getElementsByClassName("iphonewarning")[0].classList.add("fullscreeniphonewarningfix");
+                    document.getElementsByTagName("header")[0].classList.add("fullscreenheaderfix");
+                    document.getElementsByClassName("footer")[0].classList.add("fullscreenfooterfix");
+                    document.getElementsByClassName("badgeconfig")[0].classList.add("fullscreenbadgeconfigfix");
                 } else if (elem.requestFullscreen) {
                     elem.requestFullscreen();
                 } else if (elem.webkitRequestFullscreen) {
@@ -307,6 +313,11 @@
                     document.getElementsByClassName("badgepreview")[0].classList.remove("fullscreenfixpreview");
                     document.getElementsByClassName("header")[0].classList.remove("fullscreenfixheader");
                     document.getElementsByTagName("html")[0].classList.remove("fullscreenfixhtml");
+                    document.body.classList.remove("fullscreenfixbody");
+                    document.getElementsByClassName("iphonewarning")[0].classList.remove("fullscreeniphonewarningfix");
+                    document.getElementsByTagName("header")[0].classList.remove("fullscreenheaderfix");
+                    document.getElementsByClassName("footer")[0].classList.remove("fullscreenfooterfix");
+                    document.getElementsByClassName("badgeconfig")[0].classList.remove("fullscreenbadgeconfigfix");
                 } else if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.webkitExitFullscreen) { /* Safari */
