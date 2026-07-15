@@ -1,0 +1,214 @@
+.student-badge {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 15px;
+  background: #fff;
+  color: #000;
+  font-family: sans-serif;
+  line-height: normal;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+}
+
+.student-badge,
+.student-badge * {
+  box-sizing: content-box;
+}
+
+.student-badge__header {
+  display: flex;
+  height: 56px;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 21px;
+  padding-left: 20px;
+  border-radius: 15px 15px 0 0;
+  background: #f4f5f8;
+}
+
+.student-badge__header h1 {
+  margin: 0;
+  color: #14629a;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 23px;
+  letter-spacing: 0.012em;
+}
+
+.student-badge__close {
+  display: block;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.student-badge__identity {
+  display: grid;
+  grid-template-columns: 56px auto;
+  align-items: center;
+  padding: 18px 16px 31.5px;
+}
+
+.student-badge__photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.student-badge__identity-text h2 {
+  margin: 0 0 0.3px;
+  color: #262626;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.student-badge__identity-text h3 {
+  margin: 0 0 0.2px;
+  color: #737373;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.student-badge__barcode {
+  display: grid;
+  width: 86.5%;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.student-badge__barcode img {
+  width: 100%;
+  max-width: 450px;
+  height: 117px;
+  margin: auto;
+  justify-self: center;
+}
+
+.student-badge__plan {
+  padding-bottom: 26.3px;
+  padding-left: 16px;
+}
+
+.student-badge__plan h2,
+.student-badge__meal-row h2 {
+  margin: 0;
+  color: #000;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.student-badge__plan h2 {
+  white-space: normal;
+}
+
+.student-badge__meals {
+  display: grid;
+  padding-right: 16px;
+  padding-left: 16px;
+  color: #000;
+}
+
+.student-badge__meal-row {
+  display: grid;
+  grid-template-columns: 56px auto;
+}
+
+.student-badge__meal-row h2 {
+  padding-bottom: 2.5px;
+}
+
+.student-badge__meal-icon {
+  position: relative;
+  bottom: 12.3px;
+  left: 1px;
+  width: 23px;
+  height: 23px;
+  align-self: center;
+}
+
+.student-badge__day-list {
+  display: flex;
+  width: 100%;
+  max-width: 280px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 24.3px;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+}
+
+.student-badge__day-list > div {
+  width: auto;
+}
+
+.student-badge__day-state {
+  display: inline;
+  position: relative;
+  bottom: 0.5px;
+  padding-left: 3.5px;
+  padding-right: 11.5px;
+  vertical-align: baseline;
+}
+
+.student-badge__date {
+  margin-top: -12px;
+}
+
+.student-badge__date p {
+  margin: 1em 0;
+  padding-bottom: 20px;
+  color: #666;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+html:fullscreen {
+  overflow: hidden;
+}
+
+html:fullscreen .student-badge,
+.student-badge.student-badge--ios-fullscreen {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+
+html:fullscreen .student-badge__header,
+.student-badge.student-badge--ios-fullscreen .student-badge__header {
+  border-radius: 0;
+}
+
+.student-badge.student-badge--ios-fullscreen {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  overflow: auto;
+}
+
+@media screen and (orientation: landscape) {
+  html:fullscreen .student-badge.student-badge--mobile,
+  .student-badge.student-badge--ios-fullscreen {
+    inset: auto;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    transform: translate(-50%, -50%) rotate(90deg);
+    transform-origin: center center;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "École Directe Badge Bypass",
+  "short_name": "Badge Bypass",
+  "description": "Éditeur d’aperçu de badge scolaire.",
+  "lang": "fr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f5f8",
+  "theme_color": "#f4f5f8",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

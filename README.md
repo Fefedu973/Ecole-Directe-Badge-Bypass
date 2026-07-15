@@ -1,33 +1,56 @@
 # Ecole Directe Badge Bypass
 
-Static web application used to create a custom Ecole Directe badge.
+Local-first React application used to compose an Ecole Directe badge preview.
+User data and imported photos stay in the browser.
 
-## Repository layout
+## Development
 
-- `site/`: snapshot of the website that was served in production before the
-  Dokploy migration.
-- `nginx/default.conf`: static-file routing, cache policy, health endpoint, and
-  compatibility-safe security headers.
-- `Dockerfile`: pinned, unprivileged Nginx image.
-- `compose.yaml`: hardened runtime used by Dokploy.
-- `checksums/site.sha256`: file-level integrity manifest for the migrated site.
+```bash
+bun install --frozen-lockfile
+bun run dev
+```
 
-The production snapshot was captured from the legacy Raspberry Pi on
-2026-07-15. The old `.vscode` directory is retained only in the cold migration
-archive and is intentionally not published by this image.
+Quality gates:
 
-## Local container
+```bash
+bun run lint
+bun run typecheck
+bun run build
+```
+
+## Production image
+
+The Dockerfile uses two stages:
+
+1. Bun installs the locked dependencies and creates the minified Vite build.
+2. An unprivileged Nginx image receives only the generated `dist` files.
+
+No source files, development dependencies, or local user data are included in
+the runtime image.
 
 ```bash
 docker build -t ed-badge-bypass .
 docker run --rm -p 8080:8080 ed-badge-bypass
 ```
 
-Open `http://localhost:8080`. The health endpoint is available at
+Open `http://localhost:8080`. The health endpoint is
 `http://localhost:8080/healthz`.
 
-## Deployment
+## Dokploy
 
-Dokploy builds `compose.yaml` from this repository and routes
-`ed-badge-bypass.fr` to the `web` service on port `8080`. TLS termination is
-handled by Traefik.
+Create or update a Compose application with these settings:
+
+- repository: `Fefedu973/Ecole-Directe-Badge-Bypass`;
+- Compose file: `compose.yaml`;
+- service: `web`;
+- container port: `8080`;
+- branch: `main`;
+- domain and HTTPS: configured in Dokploy and terminated by Traefik.
+
+Do not publish a host port in Compose. Dokploy reaches the exposed container
+port through its internal network. Automatic deployments can be enabled from
+the repository integration after the target branch is selected.
+
+The Compose service runs read-only, drops Linux capabilities, forbids privilege
+escalation, and uses the image healthcheck. Nginx provides the SPA fallback,
+short caching for public files, and long caching for hashed Vite assets.
