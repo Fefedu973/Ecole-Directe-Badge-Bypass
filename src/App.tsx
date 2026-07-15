@@ -1,30 +1,14 @@
 import * as React from "react";
-import {
-  ExpandIcon,
-  InfoIcon,
-  RotateCcwIcon,
-  Settings2Icon,
-} from "lucide-react";
+import { ExpandIcon, InfoIcon, Settings2Icon } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 
 import { BadgePreview } from "@/components/badge-preview";
 import { FaqDialog } from "@/components/faq-dialog";
 import { PhotoField } from "@/components/photo-field";
+import { ResetBadgeDialog } from "@/components/reset-badge-dialog";
 import { ShareDialog } from "@/components/share-dialog";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogMedia,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -88,7 +72,6 @@ export function App() {
   const badgeRef = React.useRef<HTMLDivElement>(null);
   const [isFallbackFullscreen, setIsFallbackFullscreen] = React.useState(false);
   const [isNativeFullscreen, setIsNativeFullscreen] = React.useState(false);
-  const [isResetDialogOpen, setIsResetDialogOpen] = React.useState(false);
   const isIos = React.useMemo(() => detectIos(), []);
   const isMobile = React.useMemo(() => detectMobile(), []);
 
@@ -326,43 +309,7 @@ export function App() {
           </CardContent>
 
           <CardFooter className="justify-between">
-            <AlertDialog
-              open={isResetDialogOpen}
-              onOpenChange={setIsResetDialogOpen}
-            >
-              <AlertDialogTrigger
-                render={
-                  <Button type="button" variant="ghost">
-                    <RotateCcwIcon data-icon="inline-start" />
-                    Réinitialiser
-                  </Button>
-                }
-              />
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogMedia>
-                    <RotateCcwIcon />
-                  </AlertDialogMedia>
-                  <AlertDialogTitle>Réinitialiser le badge ?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Les informations et la photo enregistrées sur cet appareil
-                    seront remplacées par les valeurs par défaut.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Annuler</AlertDialogCancel>
-                  <AlertDialogAction
-                    variant="destructive"
-                    onClick={() => {
-                      resetBadge();
-                      setIsResetDialogOpen(false);
-                    }}
-                  >
-                    Réinitialiser
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
+            <ResetBadgeDialog onReset={resetBadge} />
           </CardFooter>
         </Card>
 
