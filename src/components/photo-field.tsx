@@ -17,6 +17,8 @@ type PhotoFieldProps = {
   onChange: (photo: string) => void;
 };
 
+const maximumFileSize = 10 * 1024 * 1024;
+
 export function PhotoField({ photo, onChange }: PhotoFieldProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [cropSource, setCropSource] = React.useState<string | null>(null);
@@ -29,6 +31,10 @@ export function PhotoField({ photo, onChange }: PhotoFieldProps) {
 
     if (!file.type.startsWith("image/")) {
       setError("Sélectionnez un fichier image.");
+      return;
+    }
+    if (file.size > maximumFileSize) {
+      setError("L'image doit peser moins de 10 Mo.");
       return;
     }
 
