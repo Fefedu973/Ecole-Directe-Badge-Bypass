@@ -64,8 +64,9 @@ export const BadgePreview = React.forwardRef<HTMLDivElement, BadgePreviewProps>(
       return () => window.clearInterval(interval);
     }, []);
 
-    const requestClose = (event: React.PointerEvent | React.KeyboardEvent) => {
+    const requestClose = (event: React.MouseEvent | React.KeyboardEvent) => {
       event.preventDefault();
+      event.stopPropagation();
       const currentTime = Date.now();
       if (currentTime - lastCloseInteraction.current < 500) {
         lastCloseInteraction.current = 0;
@@ -89,7 +90,7 @@ export const BadgePreview = React.forwardRef<HTMLDivElement, BadgePreviewProps>(
             alt="Quitter le plein écran"
             role="button"
             tabIndex={0}
-            onPointerDown={requestClose}
+            onClick={requestClose}
             onKeyDown={(event) => {
               if (event.key === "Enter" || event.key === " ")
                 requestClose(event);
