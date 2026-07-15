@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion EcoleDirecte</title>
+</head>
+
+<body>
+    <h1>Connexion EcoleDirecte</h1>
+    <label for="username">Nom d'utilisateur:</label>
+    <input type="text" id="username"><br>
+    <label for="password">Mot de passe:</label>
+    <input type="password" id="password"><br>
+    <button onclick="connect()">Connexion</button>
+
+    <script>
+        function connect() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            var headers = {
+                "Content-Type": "application/form-data",
+                "Accept": "application/json, text/plain, */*",
+                "User-Agent": "Mozilla 5.0/HTML, like gecko"
+            };
+
+            var data = {
+                "uuid": "",
+                "identifiant": username,
+                "isRelogin": false,
+                "motdepasse": password
+            };
+
+            var jsonData = JSON.stringify(data);
+
+            fetch("https://api.ecoledirecte.com/v3/login.awp", {
+                method: "POST",
+                headers: headers,
+                body: new URLSearchParams({
+                    data: jsonData
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    var token = data.token;
+                    headers["x-token"] = token;
+                    if (data.code != "200") {
+                        if (data.code == 250) {
+                            console.log("QCM obligatoire !");
+                            fetch("https://api.ecoledirecte.com/v3/connexion/doubleauth.awp?verbe=get", {
+                                method: "POST",
+                                headers: headers,
+                                body: 'data={}'
+                            })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log("Question: " + atob(data.data.question));
+                                });
+                        } else if (data.code == 505) {
+                            console.log("Identifiants erronés !");
+                        } else {
+                            console.log("ERREUR: Code n'est pas égal a 200 !");
+                            console.log("ERREURE: " + data.message + " (" + data.code + ")");
+                        }
+                    }
+                })
+                .catch(error => console.error('Erreur:', error));
+        }
+    </script>
+</body>
+
+</html>

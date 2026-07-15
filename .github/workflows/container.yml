@@ -1,0 +1,55 @@
+name: Container
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify production snapshot
+        run: sha256sum --check checksums/site.sha256
+
+      - name: Build image
+        run: docker build --tag ed-badge-bypass:test .
+
+      - name: Start hardened container
+        run: |
+          docker run --detach \
+            --name ed-badge-bypass \
+            --publish 127.0.0.1:18080:8080 \
+            --read-only \
+            --tmpfs /tmp:size=16m,mode=1777 \
+            --security-opt no-new-privileges:true \
+            --cap-drop ALL \
+            ed-badge-bypass:test
+
+      - name: Verify Nginx and representative routes
+        run: |
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent http://127.0.0.1:18080/healthz >/dev/null; then
+              break
+            fi
+            sleep 1
+          done
+
+          docker exec ed-badge-bypass nginx -t
+          curl --fail --silent http://127.0.0.1:18080/ >/dev/null
+          curl --fail --silent http://127.0.0.1:18080/simple/ >/dev/null
+          curl --fail --silent http://127.0.0.1:18080/beta/ >/dev/null
+          curl --fail --silent http://127.0.0.1:18080/old/ >/dev/null
+          curl --fail --silent http://127.0.0.1:18080/ads.txt >/dev/null
+
+      - name: Show logs on failure
+        if: failure()
+        run: docker logs ed-badge-bypass
+
+      - name: Stop container
+        if: always()
+        run: docker rm --force ed-badge-bypass || true

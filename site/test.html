@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cropping</title>
+    <!-- Include Croppie CSS and JavaScript -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+</head>
+<body>
+    <h1>Image Cropping</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <div id="cropContainer" style="display: none;">
+        <div id="upload-demo"></div>
+        <button id="cropImageBtn">Crop Image</button>
+        <button id="cancelCropBtn">Cancel</button>
+    </div>
+    <div id="resultContainer" style="display: none;">
+        <h2>Cropped Image</h2>
+        <img id="croppedImage" src="" alt="Cropped Image">
+    </div>
+
+    <script>
+        var $uploadCrop;
+        var rawImg;
+
+        function readFile(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    rawImg = e.target.result;
+                    showCropContainer();
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                alert("Sorry - your browser doesn't support the FileReader API");
+            }
+        }
+
+        function showCropContainer() {
+            document.getElementById("cropContainer").style.display = "block";
+            $uploadCrop = new Croppie(document.getElementById('upload-demo'), {
+                viewport: {
+                    width: 150,
+                    height: 150,
+                    type: 'circle',
+                },
+                boundary: {
+                    width: 300,
+                    height: 300
+                },
+                enableExif: true
+            });
+            $uploadCrop.bind({
+                url: rawImg
+            });
+        }
+
+        document.getElementById('imageInput').addEventListener('change', function () {
+            readFile(this);
+        });
+
+        document.getElementById('cropImageBtn').addEventListener('click', function () {
+            $uploadCrop.result('base64').then(function (resp) {
+                document.getElementById('resultContainer').style.display = 'block';
+                document.getElementById('croppedImage').src = resp;
+            });
+        });
+
+        document.getElementById('cancelCropBtn').addEventListener('click', function () {
+            $uploadCrop.destroy();
+            document.getElementById('cropContainer').style.display = 'none';
+            document.getElementById('imageInput').value = ''; // Clear input
+        });
+    </script>
+</body>
+</html>

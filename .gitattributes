@@ -1,0 +1,10 @@
+# Preserve the migrated production snapshot byte-for-byte on every platform.
+site/** -text -diff
+
+# Keep infrastructure and integrity metadata deterministic on Linux runners.
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
+nginx/*.conf text eol=lf
+checksums/*.sha256 text eol=lf
